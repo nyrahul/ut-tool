@@ -7,10 +7,11 @@ Basic unit test tool which provides:
 
 For (1) and (2), I use [minunit](https://github.com/siu/minunit) and for (3), I use LD\_PRELOAD and helpers functions (stub()/unstubAll()) defined by me.
 
-My assumptions:
-1. The code to be unit-tested is compiled as dynamic library.
+Assumption: The code to be unit-tested is compiled as dynamic library.
 
-```
+## Sample Code
+
+```c
 #include <stdio.h>
 #include "minunit.h"
 #include "wrap/wrap.h"
@@ -26,7 +27,6 @@ void teardown(void)
     unstubAll();
 }
 
-<b>
 MU_TEST(test_check)
 {
     stub("abc", 1); // stub function abc
@@ -40,7 +40,6 @@ MU_TEST(test_check)
     mu_check(abc() == 0);  // original function abc returns 0
     mu_check(xyz() == 0);  // original function xyz return 0
 }
-</b>
 
 MU_TEST_SUITE(test_suite)
 {
