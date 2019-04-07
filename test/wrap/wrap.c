@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "wrap.h"
 #define __USE_GNU
 #include <dlfcn.h>
 
