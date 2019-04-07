@@ -10,8 +10,8 @@ For (1) and (2), I use [minunit](https://github.com/siu/minunit) and for (3), I 
 My assumptions:
 1. The code to be unit-tested is compiled as dynamic library.
 
-<pre>
-#include \<stdio.h\>
+```
+#include <stdio.h>
 #include "minunit.h"
 #include "wrap/wrap.h"
 #include "../src/sample.h"
@@ -54,4 +54,4 @@ int main(int argc, char *argv[])
     MU_REPORT();
     return minunit_status;
 }
-</pre>
+```
