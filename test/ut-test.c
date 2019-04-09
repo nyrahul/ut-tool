@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "minunit.h"
 #include "wrap/wrap.h"
 #include "../src/sample.h"
@@ -11,6 +12,17 @@ void setup(void)
 void teardown(void)
 {
     unstubAll();
+}
+
+MU_TEST(test_malloc)
+{
+    stub("malloc", 1); // stub function abc
+    mu_check(malloc(100) == NULL);  // stubbed function malloc returns NULL
+
+    unstubAll();
+    void *ptr = malloc(100);
+    mu_check(ptr != NULL);  // stubbed function malloc returns NULL
+    free(ptr);
 }
 
 MU_TEST(test_check)
@@ -31,6 +43,7 @@ MU_TEST_SUITE(test_suite)
 {
     MU_SUITE_CONFIGURE(setup, teardown);
     MU_RUN_TEST(test_check);
+    MU_RUN_TEST(test_malloc);
 }
 
 int main(int argc, char *argv[])

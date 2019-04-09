@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "wrap.h"
 #define __USE_GNU
@@ -85,3 +86,12 @@ int abc(void)
     return 0xbabe;
 }
 
+void *malloc(size_t sz)
+{
+    LOAD_FUNC(malloc, void *, size_t);
+    int wv = getWrapVal(__FUNCTION__);
+    if(0 == wv) {
+        return org_malloc(sz);
+    }
+    return NULL;
+}
