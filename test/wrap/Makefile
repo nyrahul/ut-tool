@@ -1,5 +1,7 @@
+include ../../mk.inc
+
 all:
-	gcc -g wrap.c -shared -o libwrap.so -fPIC -ldl
+	$(CC) $(CFLAGS) wrap.c -shared -o libwrap.so $(LDFLAGS) -ldl
 
 clean:
-	rm libwrap.so
+	@rm libwrap.so *.gc* 2>/dev/null

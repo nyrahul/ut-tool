@@ -1,5 +1,7 @@
+include ../mk.inc
+
 all:
-	gcc -g *.c -o UT -L ../src -lsample -L wrap -lwrap
+	$(CC) $(CFLAGS) *.c -o UT -L ../src -lsample -L wrap -lwrap $(LDFLAGS)
 
 clean:
-	rm UT
+	@rm UT *.gc* 2>/dev/null

@@ -1,5 +1,7 @@
+include ../mk.inc
+
 all:
-	gcc -g sample.c -shared -o libsample.so -fPIC
+	$(CC) $(CFLAGS) sample.c -shared -o libsample.so $(LDFLAGS)
 
 clean:
-	rm libsample.so
+	@rm -f libsample.so *.gc* 2>/dev/null
