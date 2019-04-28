@@ -1,11 +1,12 @@
 # UnitTest Tool
 
 Basic unit test tool which provides:
-1. test fixtures (for e.g. setup/teardown way)
+1. test fixtures (for e.g. setup/teardown)
 2. test report (count tests, verify assertions, report failures)
-3. stub functions
+3. can stub functions
+4. No external dependencies. Should be light weight.
 
-For (1) and (2), I use [minunit](https://github.com/siu/minunit) and for (3), I use LD\_PRELOAD and helpers functions (stub()/unstubAll()) defined by me. Minunit is lightweight and does not require any other dependencies.
+For 1,2 and 4, I found that [minunit](https://github.com/siu/minunit) fits the bill and for (3), I use LD\_PRELOAD and helpers functions (stub()/unstubAll()) defined by me.
 
 Assumption: The code to be unit-tested is compiled as dynamic library.
 
