@@ -35,7 +35,7 @@ MU_TEST(test_malloc)
 
     unstubAll();
     void *ptr = malloc(100);
-    mu_check(ptr != NULL);  // stubbed function malloc returns NULL
+    mu_check(ptr != NULL);  // unstubbed malloc should returns non-NULL
     free(ptr);
 }
 
@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 
 Assuming we need to stub ```malloc()```:
 1. Define the stub ```malloc``` function in wrap.c
-2. Use LOAD\_FUNC to load the original function, it will be called ```org\_malloc```
+2. Use LOAD\_FUNC to load the original function, it will be called ```org_malloc```
 3. ```wv = getWrapVal("malloc")``` yields the value set using ```stub("malloc", 1);``` .. in this case, wv would be 1.
 4. Handle ```malloc``` stub based on wv value
 
